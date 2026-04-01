@@ -1,22 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // สั่งให้ข้ามการตรวจ Error ของ TypeScript ขณะ Build
   typescript: {
     ignoreBuildErrors: true,
   },
-  // สั่งให้ข้ามการตรวจ ESLint ขณะ Build
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  // (ออปชันเสริม) ถ้ามีรูปภาพจากภายนอกเยอะๆ ใส่ตรงนี้ได้
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
-  },
+  // ลบส่วน eslint ออกไปเลยครับ เพราะ Next.js 16 ไม่ใช้ตรงนี้แล้ว
 };
 
 export default nextConfig;
