@@ -1,0 +1,44 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // ใส่กลับมาได้เลยครับใน v6
+}
+
+model News {
+  id        String   @id @default(cuid())
+  title     String
+  content   String   @db.Text
+  category  String
+  imageUrl  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id       String @id @default(cuid())
+  username String @unique
+  password String
+  name     String?
+}
+
+model Resource {
+  id        String   @id @default(cuid())
+  title     String
+  category  String   // เช่น คุตบะฮ์, แบบฟอร์ม, ฮาลาล
+  fileUrl   String
+  fileSize  String?  // เก็บขนาดไฟล์เพื่อให้คนโหลดดูได้ (เช่น 1.2 MB)
+  createdAt DateTime @default(now())
+}
+
+model Executive {
+  id        String   @id @default(cuid())
+  name      String   // ชื่อ-นามสกุล
+  position  String   // ตำแหน่ง เช่น ประธานกรรมการ, เลขานุการ
+  imageUrl  String?  // รูปภาพผู้บริหาร (เก็บใน Supabase)
+  order     Int      @default(0) // ลำดับการแสดงผล (เช่น ประธานเลข 1)
+  createdAt DateTime @default(now())
+}
