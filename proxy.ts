@@ -1,11 +1,12 @@
 import { auth } from "@/auth"
 
-// Next.js 16 ต้องการให้ระบุฟังก์ชันให้ชัดเจน
+// ใน Next.js 16 เราใช้ฟังก์ชัน auth มาเป็นตัวจัดการ proxy (middleware)
 export default auth((req) => {
-  // ฟังก์ชันนี้จะทำงานร่วมกับ callbacks authorized ใน auth.ts
-  // เพื่อตรวจสอบว่าใครเข้าหน้า /admin ได้บ้าง
+  // ระบบจะตรวจสอบ Session จาก auth.ts อัตโนมัติ
+  // ถ้าไม่ได้ล็อกอิน ระบบจะดีดไปหน้า /login ตามที่เราตั้งไว้ใน auth.ts
 })
 
 export const config = {
+  // ระบุหน้าที่ต้องการให้ระบบตรวจสอบความปลอดภัย (ล็อกหน้าแอดมิน)
   matcher: ["/admin/:path*"],
 }
