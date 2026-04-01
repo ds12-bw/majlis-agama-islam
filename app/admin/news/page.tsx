@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 // ใส่ไว้ด้านบนสุดของไฟล์ เพื่อดึง Component ใหม่มาใช้
 import db from "@/lib/db"
 import { addNews, deleteNews } from "./actions"

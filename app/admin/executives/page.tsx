@@ -1,9 +1,9 @@
+export const dynamic = 'force-dynamic'
 import db from "@/lib/db"
 import { deleteExecutive } from "./actions"
 import { Button } from "@/components/ui/button"
 import { Trash2, Users, ArrowUpDown } from "lucide-react"
 import ExecutiveForm from "./ExecutiveForm"
-
 export default async function AdminExecutivesPage() {
   // ดึงข้อมูลเรียงตามลำดับ Order
   const executives = await db.executive.findMany({

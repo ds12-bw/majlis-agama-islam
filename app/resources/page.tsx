@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import db from "@/lib/db"
 import ResourceList from "@/components/resources/ResourceList"
 import { BookOpen } from "lucide-react"
